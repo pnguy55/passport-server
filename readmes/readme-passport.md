@@ -6,7 +6,18 @@
     const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 3) Use the following method call
-    passport.use(new GoogleStrategy());
+// Creates new instance of the GoogleStrategy
+passport.use(
+    new GoogleStrategy({
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        // this route will be added later
+        callbackURL: '/auth/google/callback'
+    },
+    accessToken => {
+        console.log(accessToken);
+    })
+);
 
 4) Make a new project on google API website at
     console.developers.google.com
@@ -26,4 +37,6 @@
 13) Create
 14) Copy client ID and secret in dev.env file
 15) add that file to .gitignore
-16) 
+16) create the callback function and route for the passport callback
+
+17) create project on mongo and install mongoose
