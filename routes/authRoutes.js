@@ -13,5 +13,5 @@ module.exports = app => {
     // After user approves of google auth, this is where google goes 
     app.get('/auth/google/callback', passport.authenticate('google'));
     
-    // All routes rapped in a function
+    // All routes wrapped in a function
 };
