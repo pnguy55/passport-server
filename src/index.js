@@ -1,25 +1,29 @@
 const express = require('express');
-const path = require('path');
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_URI);
-
-// SCHEMA MUST BE REQUIRED BEFORE PASSPORT
+const cookieSession = require('cookie-session');
+const passport = require('passport');
+const bodyParser = require('body-parser');
 require('../models/User');
 require('../services/passport');
 
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true});
+
 const app = express();
 
-require('../routes/authRoutes') (app);
+app.use(bodyParser.json());
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [process.env.COOKIE_KEY]
+  })
+);
 
-// Client ID & Client Secret - in dev.env
-const port = process.env.PORT || 3000;
+app.use(passport.initialize());
+app.use(passport.session());
+require('../routes/authRoutes')(app);
 
-const publicDirectoryPath = path.join(__dirname, '../public');
-
-
-app.use(express.static(publicDirectoryPath));
-
-
-app.listen(port, () => {
-    console.log('Server is up on port ' + port)
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log('Server is up on port ' + PORT)
 });

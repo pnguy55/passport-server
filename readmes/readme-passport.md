@@ -1,6 +1,6 @@
 #Passport for this app
 *** npm i env-cmd --save-dev
-1) npm i --save passport passport-google-oauth20
+1) npm i --save passport passport-google-oauth20 cookie-session
 2) import the following modules
     const passport = require('passport');
     const GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -40,3 +40,10 @@ passport.use(
 16) create the callback function and route for the passport callback
 
 17) create project on mongo and install mongoose
+
+18) set up user models and feed into passport service
+19) set up serialization, deserialization
+20) set up cookie-session module
+21) REMEMBER TO CALL THE AUTH ROUTES AFTER THE COOKIE AND SESSION IS CREATED
+22) make a logout route
+23) remember
