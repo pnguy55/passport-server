@@ -46,4 +46,6 @@ passport.use(
 20) set up cookie-session module
 21) REMEMBER TO CALL THE AUTH ROUTES AFTER THE COOKIE AND SESSION IS CREATED
 22) make a logout route
-23) remember
+23) create another DB, and another set of all API keys for prod environment
+24) redeploy to heroku
+25) start on front-end

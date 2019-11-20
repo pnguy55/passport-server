@@ -9,7 +9,9 @@
   },
   "scripts": {
     "start": "node src/index.js",
-    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js"
+    "server": "env-cmd -f ./config/dev.env nodemon src/index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
@@ -20,6 +22,7 @@
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "concurrently": "^5.0.0",
     "cookie-session": "^1.3.3",
     "express": "^4.17.1",
     "mongoose": "^5.7.11",
