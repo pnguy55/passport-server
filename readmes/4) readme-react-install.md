@@ -16,3 +16,11 @@ REACT TIME
     npm run dev
 
 8) npm run build each time you need a new build
+9) delete boiler plate (other than setupProxy and serviceWorker)
+
+10) create the following
+    index.js - for redux stuff
+    App.js - for react-router stuff
+
+11) make sure we're in client (react) directory run
+    npm install redux react-redux react-router-dom materialize-css

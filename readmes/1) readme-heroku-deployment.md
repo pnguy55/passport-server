@@ -10,11 +10,10 @@
 2) git remote add origin [your github repo]
 3) heroku login - logs you into heroku
 4) heroku create
-5) git remote add heroku [2nd URL provide by step 4]
 6) git add -A
 7) git commit -m 'message here'
 8) git push origin master
-9) git push origin heroku
+9) git push heroku master
 
 *if you need to reset your heroku remote use the following command
-git remote set -url heroku [new url]
+git remote set-url heroku [new url]
