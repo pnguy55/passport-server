@@ -15,5 +15,6 @@
 8) git push origin master
 9) git push heroku master
 
+** no need to set url if you've logged in
 *if you need to reset your heroku remote use the following command
 git remote set-url heroku [new url]
