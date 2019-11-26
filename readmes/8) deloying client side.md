@@ -1,4 +1,7 @@
 To deploy client side to Heroku
+
+we're basically just telling Heroku to install all dependencies on the server and to do the build over there
+
 1) npm run build
 2) add the following to root index.js of server
 
