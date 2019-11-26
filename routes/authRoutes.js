@@ -25,8 +25,5 @@ module.exports = app => {
         res.redirect('/');
     });
 
-    app.get('/' , (req, res) => {
-        res.send(req.user);
-    })
     // All routes wrapped in a function
 };
