@@ -4,6 +4,7 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 require('../models/User');
+require('../models/Survey')
 require('../services/passport');
 
 mongoose.Promise = global.Promise;
@@ -27,6 +28,7 @@ app.use(passport.session());
 require('../routes/authRoutes')(app);
 // because the route files return functions, they are immediately called by app
 require('../routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 
 if (process.env.NODE_ENV === 'production') {
