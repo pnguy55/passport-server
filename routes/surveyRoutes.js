@@ -21,8 +21,8 @@ module.exports = app => {
 
     });
 
-    app.get('api/', requireLogin, (req, res) => {
+    // app.get('api/', requireLogin, (req, res) => {
 
-    });
+    // });
 
 };
