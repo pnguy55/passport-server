@@ -1,12 +1,16 @@
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 const requireCredits = require('../middlewares/requireCredits');
+const Mailer = require('../services/Mailer');
+const surveyTemplate = require('../services/emailTemplates/surveyTemplates');
 
 const Survey = mongoose.model('surveys');
 
+
 module.exports = app => {
 
-    app.post('/api/surveys', requireLogin, requireCredits, (req, res) => {
+    // user is included on cookie
+    app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
         const { title, subject, body, recipients } = req.body;
 
         const survey = new Survey({
@@ -16,10 +20,26 @@ module.exports = app => {
             recipients: recipients.split(',').map(email => ({ email: email.trim() })),
             _user: req.user.id,
             dateSent: Date.now()
-        })
+        });
 
+        try {
+            const user = req.user;
+            const mailer = new Mailer(survey, surveyTemplate(survey, user));
+            await mailer.send();
+            await survey.save();
+            req.user.credits -= 1;
+            user = await req.user.save();
+            
+            res.send(user);
 
+        } catch (err) {
+            res.status(422);
+        }
     });
+
+    app.get('/api/surveys/thanks', (req, res) => {
+        res.send('Thanks for voting!')
+    })
 
     // app.get('api/', requireLogin, (req, res) => {
 
