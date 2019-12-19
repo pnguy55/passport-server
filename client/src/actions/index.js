@@ -12,3 +12,10 @@ export const handleToken = token => async dispatch => {
     // this line dispatches an action that will alert the reducer
     dispatch({ type: FETCH_USER, payload: res.data });
 };
+
+export const submitSurvey = (values, history) => async dispatch => {
+    const res = await axios.post('/api/surveys', values);
+    // pushing to history for redirect purposes
+    history.push('/surveys');
+    dispatch({ type: FETCH_USER, payload: res.data });
+};

@@ -48,7 +48,7 @@ class Mailer extends helper.Mail {
         });
 
         const response = await this.sgApi.API(request);
-        return response
+        return response;
     }
 
 }

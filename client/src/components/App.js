@@ -5,8 +5,8 @@ import * as actions from '../actions';
 
 import Header from './Header';
 import Landing from './Landing';
-const Dashboard = () => <h2>Dashboard</h2>
-const SurveyNew = () => <h2>SurveyNew</h2>
+import Dashboard from './Dashboard';
+import SurveyNew from './surveys/SurveyNew';
 
 
 
@@ -18,12 +18,12 @@ class App extends Component {
         return (
             <div className="container">
                 <BrowserRouter>
-                    <div>
+                    <div className="container">
                         {/* the exact makes sure that it only shows up on that path */}
                         <Header/>
                         <Route exact path='/' component={Landing} />
                         <Route exact path='/surveys' component={Dashboard} />
-                        <Route path='/survey/new' component={SurveyNew} />
+                        <Route path='/surveys/new' component={SurveyNew} />
                         <Route path='/landing' component={Landing} />
                     </div>
                 </BrowserRouter>
