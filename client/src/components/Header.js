@@ -18,6 +18,7 @@ class Header extends Component {
             default:
                 return [
                     //satify the react key requirement
+                    <Link className='btn' key='0' to='/surveys'>Dashboard</Link>,
                     <li key='1'><Payments /></li>,
                     <li key='2' style={{ margin: '0 10px'}}>Credits: {this.props.auth.credits}</li>,
                     <li key='3'><a href='/api/logout'>Logout</a></li>
