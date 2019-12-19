@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, HashRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
@@ -17,7 +17,7 @@ class App extends Component {
     render() {
         return (
             <div className="container">
-                <BrowserRouter>
+                <HashRouter basename='/'>
                     <div className="container">
                         {/* the exact makes sure that it only shows up on that path */}
                         <Header/>
@@ -26,7 +26,7 @@ class App extends Component {
                         <Route path='/surveys/new' component={SurveyNew} />
                         <Route path='/landing' component={Landing} />
                     </div>
-                </BrowserRouter>
+                </HashRouter>
             </div>
         );
     }
