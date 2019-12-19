@@ -8,10 +8,10 @@ module.exports = (survey, user) => {
                 <p>${survey.body}</p>
                 <p>${user.credits}</p>
                 <div>
-                    <a href="${process.env.EMAIL_REDIRECT_DOMAIN}/api/surveys/thanks">Yes</a>
+                    <a href="${process.env.EMAIL_REDIRECT_DOMAIN}/api/surveys/${survey.id}/yes">Yes</a>
                 </div>
                 <div>
-                    <a href="${process.env.EMAIL_REDIRECT_DOMAIN}/api/surveys/thanks">No</a>
+                    <a href="${process.env.EMAIL_REDIRECT_DOMAIN}/api/surveys/${survey.id}/no">No</a>
                 </div>
             </div>
         </body>
