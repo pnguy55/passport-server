@@ -20,13 +20,11 @@ class Header extends Component {
             default:
                 return [
                     //satify the react key requirement
-                    <Link className='btn' key='0' to='/surveys'>Dashboard</Link>,
-                    <li key='1'><Payments /></li>,
-                    <li key='2' style={{ margin: '0 10px'}}>Credits: {this.props.auth.credits}</li>,
-                    <li key='3'><a href='/api/logout'>Logout</a></li>
+                    <li key='1'><Link className='btn' to='/surveys'>Dashboard</Link></li>,
+                    <li key='2'><Payments /></li>,
+                    <li key='3'><div className='btn green' style={{margin: '0px 15px'}}>Credits: {this.props.auth.credits}</div></li>,
+                    <li key='4'><a className='btn red' href='/api/logout'>Logout</a></li>
                 ]
-                
-                
         }
     }
     
@@ -41,7 +39,9 @@ class Header extends Component {
                         >
                             Emaily
                         </Link>
-                        <SideNav>{this.renderContent()}</SideNav>
+                        <SideNav>
+                            {this.renderContent()}
+                        </SideNav>
                         <ul id="nav-mobile" className="right hide-on-med-and-down">
                             {this.renderContent()}
                         </ul>

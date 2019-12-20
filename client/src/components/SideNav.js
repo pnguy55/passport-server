@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import M from "materialize-css";
+import { Link } from 'react-router-dom';
 import "materialize-css/dist/css/materialize.min.css";
 
 class Sidenav extends Component {
@@ -12,9 +13,6 @@ class Sidenav extends Component {
 
     M.Sidenav.init(this.Sidenav);
 
-    let instance = M.Sidenav.getInstance(this.Sidenav);
-    instance.open();
-    console.log(instance.isOpen);
   }
   render() {
     return (
@@ -25,8 +23,20 @@ class Sidenav extends Component {
           }}
           id="slide-out"
           className="sidenav"
+          style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}
         >
-          {this.props.children}
+            <li>
+                <div>
+                    <Link 
+                    to={this.props.auth ? '/' : '/'} 
+                    className="brand-logo black-text"
+                    style={{position:'relative'}}
+                    >
+                        Emaily
+                    </Link>
+                </div>
+            </li>
+            {this.props.children}
         </ul>
         <a href="#!" data-target="slide-out" className="sidenav-trigger">
           <i className="material-icons">menu</i>

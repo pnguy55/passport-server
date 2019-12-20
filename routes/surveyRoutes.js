@@ -15,15 +15,25 @@ module.exports = app => {
     // user is included on cookie
 
     app.get('/api/surveys', requireLogin, async (req, res) => {
-    const surveys = await Survey.find({ _user: req.user.id }).select({
-        recipients: false
+        // the select recipients removes that from the get request
+        const surveys = await Survey.find({ _user: req.user.id }).select({
+            recipients: false
+        });
+
+        res.send(surveys);
     });
 
-    res.send(surveys);
-    });
+    app.delete('/api/surveys/:surveyId', requireLogin, async (req, res) => {
+        await Survey.findByIdAndDelete(req.params.surveyId);
+        const surveys = await Survey.find({ _user: req.user.id }).select({
+            recipients: false
+        });
+
+        res.status(200).send(surveys)
+    })
 
     app.get('/api/surveys/:surveyId/:choice', (req, res) => {
-    res.send('Thanks for voting!');
+        res.send('Thanks for voting!');
     });
 
     app.post('/api/surveys/webhooks', (req, res) => {
