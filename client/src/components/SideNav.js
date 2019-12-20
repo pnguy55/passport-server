@@ -38,9 +38,14 @@ class Sidenav extends Component {
             </li>
             {this.props.children}
         </ul>
-        <a href="#!" data-target="slide-out" className="sidenav-trigger">
+        <a href="#!" >
           <i className="material-icons">menu</i>
         </a>
+        <div className="fixed-action-btn" style={{marginRight: '6rem'}}>
+            <div data-target="slide-out" className="sidenav-trigger btn-floating btn-large red">
+                <i className="material-icons">menu</i>
+            </div>
+        </div>
       </>
     );
   }

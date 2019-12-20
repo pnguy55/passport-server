@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { fetchSurveys, deleteSurvey } from '../../actions'
+import { connect } from 'react-redux';
+import { fetchSurveys, deleteSurvey } from '../../actions';
 
 class SurveyList extends Component {
 
@@ -8,25 +8,25 @@ class SurveyList extends Component {
         this.props.fetchSurveys();
     }
 
-    deleteSurvey(surveyId) {
-        this.props.deleteSurvey(surveyId);
+    componentDidUpdate() {
+        this.props.fetchSurveys();
     }
 
     renderSurveys() {
         return this.props.surveys.reverse().map(survey => {
             return (
-                <div class="card blue-grey darken-1" key={survey._id}>
-                    <div class="card-content white-text">
-                        <span class="card-title">{survey.title}</span>
+                <div className="card blue-grey darken-1" key={survey._id}>
+                    <div className="card-content white-text">
+                        <span className="card-title">{survey.title}</span>
                         <p>{survey.body}</p>
                         <p className="right">
                             Sent On: {new Date(survey.dateSent).toLocaleDateString()}
                         </p>
                     </div>
-                    <div class="card-action">
-                        <a href="#">Yes: {survey.yes}</a>
-                        <a href="#">No: {survey.no}</a>
-                        <a href="#" className="btn red" onClick={() => deleteSurvey(survey._id)}> Delete Survey?</a>
+                    <div className="card-action">
+                        <div>Yes: {survey.yes}</div>
+                        <div>No: {survey.no}</div>
+                        <div className="btn red" onClick={() => this.props.deleteSurvey(survey._id)}> Delete Survey?</div>
                     </div>
                 </div>
             );
@@ -44,7 +44,9 @@ class SurveyList extends Component {
 
 function mapStateToProps(state) {
     // we declared the state piece's name in auth reducer
-    return { surveys: state.surveys }
+    return { 
+        surveys: state.surveys
+    }
 }
 
-export default connect(mapStateToProps, { fetchSurveys })(SurveyList);
+export default connect(mapStateToProps, { fetchSurveys, deleteSurvey })(SurveyList);

@@ -45,6 +45,11 @@ class Header extends Component {
                         <ul id="nav-mobile" className="right hide-on-med-and-down">
                             {this.renderContent()}
                         </ul>
+                        <div className="fixed-action-btn">
+                            <Link to='/surveys/new' className="btn-floating btn-large red">
+                                <i className="material-icons">add</i>
+                            </Link>
+                        </div>
                     </div>
                 </nav>
                 

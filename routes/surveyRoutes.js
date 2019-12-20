@@ -24,12 +24,10 @@ module.exports = app => {
     });
 
     app.delete('/api/surveys/:surveyId', requireLogin, async (req, res) => {
-        await Survey.findByIdAndDelete(req.params.surveyId);
-        const surveys = await Survey.find({ _user: req.user.id }).select({
-            recipients: false
-        });
+        const survey = await Survey.findByIdAndDelete(req.params.surveyId);
+        console.log(survey);
 
-        res.status(200).send(surveys)
+        res.status(200).send()
     })
 
     app.get('/api/surveys/:surveyId/:choice', (req, res) => {
