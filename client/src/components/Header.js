@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Payments from './Payments';
 import CreditDisplay from './CreditDisplay';
+import SideNav from './SideNav';
 
 class Header extends Component {
+    
     renderContent() {
         // this auth object actually has our user data
         switch (this.props.auth){
@@ -30,19 +32,24 @@ class Header extends Component {
     
     render() {
         return (
-            <nav className='deep-purple lighten-1'>
-                <div className="nav-wrapper">
-                    <Link 
-                    to={this.props.auth ? '/surveys' : '/'} 
-                    className="brand-logo"
-                    >
-                        Emaily
-                    </Link>
-                    <ul id="nav-mobile" className="right hide-on-med-and-down">
-                        {this.renderContent()}
-                    </ul>
-                </div>
-            </nav>
+            <div>
+                <nav className='deep-purple lighten-1'>
+                    <div className="nav-wrapper">
+                        <Link 
+                        to={this.props.auth ? '/' : '/'} 
+                        className="brand-logo"
+                        >
+                            Emaily
+                        </Link>
+                        <SideNav>{this.renderContent()}</SideNav>
+                        <ul id="nav-mobile" className="right hide-on-med-and-down">
+                            {this.renderContent()}
+                        </ul>
+                    </div>
+                </nav>
+                
+
+            </div>
         );
     }
 }
