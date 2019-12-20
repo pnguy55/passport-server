@@ -7,6 +7,7 @@ import SideNav from './SideNav';
 
 class Header extends Component {
     
+
     renderContent() {
         // this auth object actually has our user data
         switch (this.props.auth){
@@ -23,11 +24,13 @@ class Header extends Component {
                     <li key='1'><Link className='btn' to='/surveys'>Dashboard</Link></li>,
                     <li key='2'><Payments /></li>,
                     <li key='3'><div className='btn green' style={{margin: '0px 15px'}}>Credits: {this.props.auth.credits}</div></li>,
-                    <li key='4'><a className='btn red' href='/api/logout'>Logout</a></li>
+                    <li key='4'><a className='btn red' href='/api/logout'>Logout</a></li>                    
                 ]
         }
     }
     
+    
+
     render() {
         return (
             <div>
@@ -40,7 +43,7 @@ class Header extends Component {
                             Emaily
                         </Link>
                         <SideNav>
-                            {this.renderContent()}
+                                {this.renderContent()}
                         </SideNav>
                         <ul id="nav-mobile" className="right hide-on-med-and-down">
                             {this.renderContent()}
@@ -51,9 +54,8 @@ class Header extends Component {
                             </Link>
                         </div>
                     </div>
+                    
                 </nav>
-                
-
             </div>
         );
     }
